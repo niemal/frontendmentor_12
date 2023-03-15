@@ -1,7 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import ShinyButton from "../ShinyButton";
 import { QUERIES } from "../constants";
 import { useState } from "react";
+import { hoverSupported } from "../hoverSupported";
 
 const Wrapper = styled.div`
   background-color: var(--color-white);
@@ -53,6 +54,15 @@ const NavEntry = styled.a`
   text-decoration: none;
   color: var(--color-gray-blue);
   font-weight: var(--font-weight-light);
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+
+  ${hoverSupported(css`
+    &:hover {
+      color: var(--color-dark-blue);
+      border-color: var(--color-dark-blue);
+    }
+  `)}
 `;
 
 const ButtonContainer = styled.div`

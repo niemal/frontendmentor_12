@@ -60,16 +60,16 @@ const Article = styled.div`
   transition: all 0.2s ease-in-out;
   width: 320px;
 
+  opacity: 0;
+  ${(p) => (p.inView ? articlesAnim : "")}
+  animation-delay: ${(p) => p.delay}s;
+
   ${hoverSupported(css`
     &:hover {
       box-shadow: 2px 3px 12px var(--color-gray-blue);
       transform: translateY(-6px);
     }
   `)}
-
-  opacity: 0;
-  ${(p) => (p.inView ? articlesAnim : "")}
-  animation-delay: ${(p) => p.delay}s;
 `;
 
 const Image = styled.img`
