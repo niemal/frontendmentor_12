@@ -2,14 +2,20 @@ import styled, { css } from "styled-components";
 import { useState } from "react";
 import { useInterval } from "../useInterval";
 import { hoverSupported } from "../hoverSupported";
+import ClickableWrapper from "../ClickableWrapper";
 
-const Wrapper = styled.div`
+const Wrapper = styled.button`
   padding: 12px 36px;
   cursor: pointer;
   color: var(--color-white);
   font-weight: var(--font-weight-bold);
   border-radius: 24px;
   transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: 2px solid var(--color-lime-green);
+    outline-offset: 3px;
+  }
 
   ${hoverSupported(css`
     &:hover {
@@ -61,18 +67,20 @@ function ShinyButton({ children, style }) {
   }, 40);
 
   return (
-    <Wrapper
-      style={{
-        ...style,
-        background: `linear-gradient(
+    <ClickableWrapper>
+      <Wrapper
+        style={{
+          ...style,
+          background: `linear-gradient(
       40deg,
       var(--color-lime-green) ${x}%,
       var(--color-bright-cyan) ${y}%
     )`,
-      }}
-    >
-      {children}
-    </Wrapper>
+        }}
+      >
+        {children}
+      </Wrapper>
+    </ClickableWrapper>
   );
 }
 

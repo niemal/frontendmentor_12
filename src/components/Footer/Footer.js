@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Container } from "../WhyChooseUs";
 import ShinyButton from "../ShinyButton";
 import { QUERIES } from "../constants";
+import ClickableWrapper from "../ClickableWrapper";
 
 const Wrapper = styled.footer`
   min-height: 250px;
@@ -52,7 +53,7 @@ const Logo = styled.img`
   width: 100%;
 `;
 
-const SocialWrapper = styled.div`
+const SocialWrapper = styled.nav`
   display: flex;
   gap: 14px;
   align-items: baseline;
@@ -62,6 +63,13 @@ const SocialLink = styled.a`
   text-decoration: none;
   width: 30px;
   height: 30px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: 4px solid var(--color-lime-green);
+    outline-offset: 8px;
+  }
 `;
 
 const LinksWrapper = styled.div`
@@ -86,7 +94,7 @@ const LinksWrapper = styled.div`
   }
 `;
 
-const LinkWrapper = styled.div`
+const LinkWrapper = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -96,6 +104,13 @@ const Link = styled.a`
   text-decoration: none;
   color: var(--color-white);
   font-weight: var(--font-weight-regular);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: 2px solid var(--color-lime-green);
+    outline-offset: 4px;
+  }
 `;
 
 const CopyrightWrapper = styled.div`
@@ -122,55 +137,77 @@ function Footer() {
           <LogoWrapper>
             <Logo
               src={"/frontendmentor_12/logo_footer.svg"}
-              alt={"footer logo image"}
+              alt={"footer logo image button"}
             />
           </LogoWrapper>
 
-          <SocialWrapper>
-            <SocialLink href={"/"}>
-              <Logo
-                src={"/frontendmentor_12/icon-facebook.svg"}
-                alt={"facebook link image"}
-              />
-            </SocialLink>
-            <SocialLink href={"/"}>
-              <Logo
-                src={"/frontendmentor_12/icon-youtube.svg"}
-                alt={"youtube link image"}
-              />
-            </SocialLink>
-            <SocialLink href={"/"}>
-              <Logo
-                src={"/frontendmentor_12/icon-twitter.svg"}
-                alt={"twitter link image"}
-              />
-            </SocialLink>
-            <SocialLink href={"/"}>
-              <Logo
-                src={"/frontendmentor_12/icon-pinterest.svg"}
-                alt={"pinterest link image"}
-              />
-            </SocialLink>
-            <SocialLink href={"/"}>
-              <Logo
-                src={"/frontendmentor_12/icon-instagram.svg"}
-                alt={"instagram link image"}
-              />
-            </SocialLink>
+          <SocialWrapper aria-label={"social menu navigation"}>
+            <ClickableWrapper>
+              <SocialLink href={"/"}>
+                <Logo
+                  src={"/frontendmentor_12/icon-facebook.svg"}
+                  alt={"facebook link image button"}
+                />
+              </SocialLink>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <SocialLink href={"/"}>
+                <Logo
+                  src={"/frontendmentor_12/icon-youtube.svg"}
+                  alt={"youtube link image button"}
+                />
+              </SocialLink>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <SocialLink href={"/"}>
+                <Logo
+                  src={"/frontendmentor_12/icon-twitter.svg"}
+                  alt={"twitter link image button"}
+                />
+              </SocialLink>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <SocialLink href={"/"}>
+                <Logo
+                  src={"/frontendmentor_12/icon-pinterest.svg"}
+                  alt={"pinterest link image button"}
+                />
+              </SocialLink>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <SocialLink href={"/"}>
+                <Logo
+                  src={"/frontendmentor_12/icon-instagram.svg"}
+                  alt={"instagram link image button"}
+                />
+              </SocialLink>
+            </ClickableWrapper>
           </SocialWrapper>
         </LogoAndSocialWrapper>
 
-        <LinksWrapper>
+        <LinksWrapper aria-label={"Footer site links menu #1"}>
           <LinkWrapper>
-            <Link href={"/"}>About Us</Link>
-            <Link href={"/"}>Contact</Link>
-            <Link href={"/"}>Blog</Link>
+            <ClickableWrapper>
+              <Link href={"/"}>About Us</Link>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <Link href={"/"}>Contact</Link>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <Link href={"/"}>Blog</Link>
+            </ClickableWrapper>
           </LinkWrapper>
 
-          <LinkWrapper>
-            <Link href={"/"}>Careers</Link>
-            <Link href={"/"}>Support</Link>
-            <Link href={"/"}>Privacy Policy</Link>
+          <LinkWrapper aria-label={"Footer site links menu #2"}>
+            <ClickableWrapper>
+              <Link href={"/"}>Careers</Link>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <Link href={"/"}>Support</Link>
+            </ClickableWrapper>
+            <ClickableWrapper>
+              <Link href={"/"}>Privacy Policy</Link>
+            </ClickableWrapper>
           </LinkWrapper>
         </LinksWrapper>
 

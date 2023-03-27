@@ -3,7 +3,7 @@ import { isMobile } from "react-device-detect";
 import ShinyButton from "../ShinyButton/ShinyButton";
 import { QUERIES } from "../constants";
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   min-height: 700px;
   background: linear-gradient(
     180deg,
@@ -168,7 +168,7 @@ const PhoneImage = styled.img`
 
 function MainHero() {
   return (
-    <Wrapper>
+    <Wrapper aria-label={"Main hero content"}>
       <AbsoluteContainer>
         <TextContainer>
           <TextWrapper>
@@ -178,7 +178,10 @@ function MainHero() {
               one-stop-shop for spending, saving, budgeting, investing, and much
               more.
             </TextDesc>
-            <ShinyButton style={{ width: "max-content" }}>
+            <ShinyButton
+              aria-label={"request invite"}
+              style={{ width: "max-content" }}
+            >
               Request invite
             </ShinyButton>
           </TextWrapper>

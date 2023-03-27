@@ -2,7 +2,7 @@ import styled, { keyframes, css } from "styled-components";
 import { QUERIES } from "../constants";
 import { useInView } from "react-intersection-observer";
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   position: relative;
   min-height: 100%;
   background-color: var(--color-very-light-gray);
@@ -138,7 +138,7 @@ function WhyChooseUs() {
   });
 
   return (
-    <Wrapper>
+    <Wrapper aria-label={"Why choose us"}>
       <Container>
         <TextWrapper>
           <Title>Why choose Easeybank?</Title>

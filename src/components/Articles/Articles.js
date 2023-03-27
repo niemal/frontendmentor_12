@@ -3,8 +3,9 @@ import { Container } from "../WhyChooseUs";
 import { hoverSupported } from "../hoverSupported";
 import { QUERIES } from "../constants";
 import { useInView } from "react-intersection-observer";
+import ClickableWrapper from "../ClickableWrapper";
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   background: linear-gradient(
     180deg,
     var(--color-white) 20%,
@@ -45,7 +46,7 @@ const slideIn = keyframes`
   }
   100% {
     opacity: 1;
-    transform: translateY(0%);
+    transform: translateY(0px);
   }
 `;
 
@@ -53,7 +54,8 @@ const articlesAnim = css`
   animation: 0.45s ${slideIn} ease-in forwards;
 `;
 
-const Article = styled.div`
+const Article = styled.a`
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -64,8 +66,16 @@ const Article = styled.div`
   ${(p) => (p.inView ? articlesAnim : "")}
   animation-delay: ${(p) => p.delay}s;
 
+  border-radius: 8px;
+
+  &:focus {
+    outline: 4px solid var(--color-lime-green);
+    outline-offset: 7px;
+  }
+
   ${hoverSupported(css`
     &:hover {
+      opacity: 1;
       box-shadow: 2px 3px 12px var(--color-gray-blue);
       transform: translateY(-6px);
     }
@@ -135,79 +145,87 @@ function Articles() {
   });
 
   return (
-    <Wrapper>
+    <Wrapper aria-label={"Latest articles"}>
       <Container>
         <Title>Latest Articles</Title>
 
         <ArticlesWrapper ref={articlesRef}>
-          <Article inView={inViewArticles} delay={0}>
-            <Image
-              src={"/frontendmentor_12/image-currency.jpg"}
-              alt={"image currency"}
-            />
-            <ContentWrapper>
-              <Author>By Claire Robinson</Author>
-              <ArticleTitle>
-                Receive money in any currency with no fees
-              </ArticleTitle>
-              <ArticleDesc>
-                The world is getting smaller and we're becoming more mobile. So
-                why should you be forced to only receive money in a single
-                exchange when you can extra word it up.
-              </ArticleDesc>
-            </ContentWrapper>
-          </Article>
-          <Article inView={inViewArticles} delay={0.3}>
-            <Image
-              src={"/frontendmentor_12/image-restaurant.jpg"}
-              alt={"image restaurant"}
-            />
-            <ContentWrapper>
-              <Author>By Wilson Hutton</Author>
-              <ArticleTitle>
-                Treat yourself without worrying about money
-              </ArticleTitle>
-              <ArticleDesc>
-                Our simple budgeting feature allows you to separate out your
-                spending and set realistic limits each month. That means you go
-                the extra mile.
-              </ArticleDesc>
-            </ContentWrapper>
-          </Article>
-          <Article inView={inViewArticles} delay={1.2}>
-            <Image
-              src={"/frontendmentor_12/image-plane.jpg"}
-              alt={"image plane"}
-            />
-            <ContentWrapper>
-              <Author>By Wilson Hutton</Author>
-              <ArticleTitle>
-                Take your Easybank card wherever you go
-              </ArticleTitle>
-              <ArticleDesc>
-                We want you to enjoy your travels. This is why we don't charge
-                any fees on purchases while you're abroad. We'll even show you
-                what it means to fly.
-              </ArticleDesc>
-            </ContentWrapper>
-          </Article>
-          <Article inView={inViewArticles} delay={2}>
-            <Image
-              src={"/frontendmentor_12/image-confetti.jpg"}
-              alt={"image plane"}
-            />
-            <ContentWrapper>
-              <Author>By Claire Robinson</Author>
-              <ArticleTitle>
-                Our invite-only Beta accounts are now live!
-              </ArticleTitle>
-              <ArticleDesc>
-                After a lot of hard work by the whole team, we're excited to
-                launch our closed beta. It's easy to request an ivnite through
-                the site and through the roof.
-              </ArticleDesc>
-            </ContentWrapper>
-          </Article>
+          <ClickableWrapper href={"#"}>
+            <Article inView={inViewArticles} delay={0}>
+              <Image
+                src={"/frontendmentor_12/image-currency.jpg"}
+                alt={"image currency"}
+              />
+              <ContentWrapper>
+                <Author>By Claire Robinson</Author>
+                <ArticleTitle>
+                  Receive money in any currency with no fees
+                </ArticleTitle>
+                <ArticleDesc>
+                  The world is getting smaller and we're becoming more mobile.
+                  So why should you be forced to only receive money in a single
+                  exchange when you can extra word it up.
+                </ArticleDesc>
+              </ContentWrapper>
+            </Article>
+          </ClickableWrapper>
+          <ClickableWrapper href={"#"}>
+            <Article inView={inViewArticles} delay={0.3}>
+              <Image
+                src={"/frontendmentor_12/image-restaurant.jpg"}
+                alt={"image restaurant"}
+              />
+              <ContentWrapper>
+                <Author>By Wilson Hutton</Author>
+                <ArticleTitle>
+                  Treat yourself without worrying about money
+                </ArticleTitle>
+                <ArticleDesc>
+                  Our simple budgeting feature allows you to separate out your
+                  spending and set realistic limits each month. That means you
+                  go the extra mile.
+                </ArticleDesc>
+              </ContentWrapper>
+            </Article>
+          </ClickableWrapper>
+          <ClickableWrapper href={"#"}>
+            <Article inView={inViewArticles} delay={1.2}>
+              <Image
+                src={"/frontendmentor_12/image-plane.jpg"}
+                alt={"image plane"}
+              />
+              <ContentWrapper>
+                <Author>By Wilson Hutton</Author>
+                <ArticleTitle>
+                  Take your Easybank card wherever you go
+                </ArticleTitle>
+                <ArticleDesc>
+                  We want you to enjoy your travels. This is why we don't charge
+                  any fees on purchases while you're abroad. We'll even show you
+                  what it means to fly.
+                </ArticleDesc>
+              </ContentWrapper>
+            </Article>
+          </ClickableWrapper>
+          <ClickableWrapper href={"#"}>
+            <Article inView={inViewArticles} delay={2}>
+              <Image
+                src={"/frontendmentor_12/image-confetti.jpg"}
+                alt={"image plane"}
+              />
+              <ContentWrapper>
+                <Author>By Claire Robinson</Author>
+                <ArticleTitle>
+                  Our invite-only Beta accounts are now live!
+                </ArticleTitle>
+                <ArticleDesc>
+                  After a lot of hard work by the whole team, we're excited to
+                  launch our closed beta. It's easy to request an ivnite through
+                  the site and through the roof.
+                </ArticleDesc>
+              </ContentWrapper>
+            </Article>
+          </ClickableWrapper>
         </ArticlesWrapper>
       </Container>
     </Wrapper>

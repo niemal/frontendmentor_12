@@ -3,6 +3,7 @@ import ShinyButton from "../ShinyButton";
 import { QUERIES } from "../constants";
 import { useState } from "react";
 import { hoverSupported } from "../hoverSupported";
+import ClickableWrapper from "../ClickableWrapper";
 
 const Wrapper = styled.div`
   background-color: var(--color-white);
@@ -40,7 +41,7 @@ const Logo = styled.img`
   width: 100%;
 `;
 
-const NavWrapper = styled.div`
+const NavWrapper = styled.nav`
   display: flex;
   gap: 20px;
   align-items: center;
@@ -56,6 +57,11 @@ const NavEntry = styled.a`
   font-weight: var(--font-weight-light);
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease-in-out;
+
+  &:focus {
+    outline: 2px solid var(--color-lime-green);
+    outline-offset: 3px;
+  }
 
   ${hoverSupported(css`
     &:hover {
@@ -168,16 +174,28 @@ function NavBar() {
           <Logo src={"/frontendmentor_12/logo.svg"} alt={"logo image"} />
         </LogoContainer>
 
-        <NavWrapper>
-          <NavEntry href={"/"}>Home</NavEntry>
-          <NavEntry href={"/"}>About</NavEntry>
-          <NavEntry href={"/"}>Contact</NavEntry>
-          <NavEntry href={"/"}>Blog</NavEntry>
-          <NavEntry href={"/"}>Careers</NavEntry>
+        <NavWrapper aria-label={"navigation menu"}>
+          <ClickableWrapper>
+            <NavEntry href={"/"}>Home</NavEntry>
+          </ClickableWrapper>
+          <ClickableWrapper>
+            <NavEntry href={"/"}>About</NavEntry>
+          </ClickableWrapper>
+          <ClickableWrapper>
+            <NavEntry href={"/"}>Contact</NavEntry>
+          </ClickableWrapper>
+          <ClickableWrapper>
+            <NavEntry href={"/"}>Blog</NavEntry>
+          </ClickableWrapper>
+          <ClickableWrapper>
+            <NavEntry href={"/"}>Careers</NavEntry>
+          </ClickableWrapper>
         </NavWrapper>
 
         <ButtonContainer>
-          <ShinyButton>Request invite</ShinyButton>
+          <ShinyButton aria-label={"request invite button"}>
+            Request invite
+          </ShinyButton>
         </ButtonContainer>
 
         {!open ? (
